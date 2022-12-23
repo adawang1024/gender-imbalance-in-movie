@@ -1,0 +1,416 @@
+------------------------------TESTING IN ACTOR CLASS------------------------------
+[Testing constructor by entering new actor. Expect 'Jane Smith, Female'] --> (Jane Smith, Female)
+[Testing getGender. Expect 'Female'] --> Female
+[Testing getName. Expect 'Jane Smith'] --> Jane Smith
+
+[Testing setGender, setting to 'Male'. Expect 'Jane Smith, Male'] --> (Jane Smith, Male)
+[Testing setName, setting to 'John Brown'. Expect 'John Brown, Male'] --> (John Brown, Male)
+[Testing getGender. Expect 'Male'] --> Male
+[Testing getName. Expect 'John Brown'] --> John Brown
+
+[Recreating Jane Smith as new actor. Expect 'Jane Smith, Female'] --> (Jane Smith, Female)
+
+[Testing equals. Expect 'false'] --> false
+[Testing equals. Expect 'true'] --> true
+[Testing equals. Expect 'false'] --> false
+[Testing equals. Expect 'false'] --> false
+
+[Testing hashcode. Expect unique integer] --> 264317409
+[Testing hashcode. Expect unique integer] --> -2011217263
+[Testing hashcode. Expect same int as above] --> -2011217263
+[Testing hashcode. Expect same int as above] --> -2011217263
+[Testing hashcode. Expect same int as first] --> 264317409
+
+------------------------------TESTING IN MOVIE CLASS------------------------------
+[Trying to read from a file that doesn't exist. Expect an appropriate error message]
+Error trying to use file named 'doesntExist.txt'
+	java.io.FileNotFoundException: doesntExist.txt (No such file or directory)
+
+[Testing getActors() on a Movie, when actors haven't been added yet. Expect it to return an empty linkedlist] --> []
+[Testing getAllActors() on a Movie, when actors haven't been added yet. Expect it to return an empty hashtable] --> {}
+
+[Initial Testing using small_castGender.txt]
+[Testing addAllActors() on movie 'Alpha'. Expect 4 actors (feminist score not calculated yet)] --> Alpha (4 actors, and a feminist score of 0)
+[Expect getTitle() to return Alpha] --> Alpha
+[Expect getActors() to return list containing Tyler Perry, Cassi Davis, Patrice Lovely, and Stella] --> [Tyler Perry, Stella, Patrice Lovely, Cassi Davis]
+[Expect getAllTestResults() to return an empty vector] --> []
+[Setting test results to 0,0,1,1,1,1,0,1,1,1,1,1,1] --> [0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1]
+[Expect feministScore() of movie with title 'Alpha' to be 45] ---> 45
+[Testing setTestResults method. Setting test results to 0,0,0,0,0,0,0,0,0,0,0,0,0. Expect feministScore() to return 100] --> 100
+[Setting test results to 1,1,1,1,1,1,1,1,1,1,1,1,1. Expect feministScore of 0] --> 0
+[Setting test results to 0,0,0,1,0,0,0,1,0,0,1,1,1. Expect feministScore of 55] --> 55
+[Setting test results to 1,1,0,1,1,1,0,1,1,1,1,1,1. Expect feministScore of 5] --> 5
+
+[Expect Gamma to have 2 actors (feminist score not calculated yet)] --> Gamma (2 actors, and a feminist score of 0)
+[Expect getAllActors to return hashtable containing: (Tyler Perry, Male)=Leading, (Cassi Davis, Female)=Supporting] --> {(Tyler Perry, Male)=Leading, (Cassi Davis, Female)=Supporting}
+
+[Adding one actor, Jane Smith, to Gamma. Expect addOneActor to return (Jane Smith, Female)] --> (Jane Smith, Female)
+[Expect Gamma to now have 3 actors] --> Gamma (3 actors, and a feminist score of 0)
+[Expect getAllActors to now return hashtable containing: (Tyler Perry, Male)=Leading, (Cassi Davis, Female)=Supporting, (Jane Smith, Female)=Supporting] --> {(Jane Smith, Female)=Supporting, (Tyler Perry, Male)=Leading, (Cassi Davis, Female)=Supporting}
+
+[Testing compareTo on Movies Alpha and Beta (m1 and m3)]
+[Setting test results and feminist scores equal to each other (and they both have the same # of actors). Expect m1.compareTo(m3) to return 1] --> 1
+[With scores and total # of actors equal, expect m3.compareTo(m1) to return -1] --> -1
+[Adding 1 actor to m3 (but m1 and m3 still have the same feminist score). Expect m3.compareTo(m1) to return -1] --> -1
+[Same score, but m3 has more actors. Expect m1.compareTo(m3) to return 1] --> 1
+[Changing m3 to have a lower feminist score. Expect m1.compareTo(m3) to return 1] --> 1
+[Since m3 has lower feminist score, expect m3.compareTo(m1) to return -1] --> -1
+
+
+[Testing using nextBechdel_castGender.txt]
+[Testing addAllActors, (feminist scores not calculated yet)]
+[Expect 42 actors in 'Boo! A Madea Halloween'] --> Boo! A Madea Halloween (42 actors, and a feminist score of 0)
+[Expect 90 actors in 'X-Men: Apocalypse'] --> X-Men: Apocalypse (90 actors, and a feminist score of 0)
+[Expect 61 actors in 'Fantastic Beasts and Where to Find Them'] --> Fantastic Beasts and Where to Find Them (61 actors, and a feminist score of 0)
+
+[TESTING FEMINISTSCORE]
+Expect X-Men to have feminist score of 40 --> 40
+Expect Fantastic Beasts to have feminist score of 45 --> 45
+
+[TESTING COMPARETO]
+X-Men should be ranked lower than Fantastic Beasts, expecting -1: -1
+Fantastic Beasts should be ranked higher than X-Men, expecting 1: 1
+
+------------------------------TESTING IN MOVIE COLLECTION CLASS------------------------------
+[TESTING USING NONEXISTENT FILES (expect error and appropriate message)]
+Error trying to use file named 'data/no.txt'
+	java.io.FileNotFoundException: data/no.txt (No such file or directory)
+Error trying to use file named 'data/exist.txt'
+	java.io.FileNotFoundException: data/exist.txt (No such file or directory)
+
+[TRYING TO USE NONEXISTENT CAST FILE (expect error message, but movies can still be printed, just without actors)]
+Error trying to use file named 'no.txt'
+	java.io.FileNotFoundException: no.txt (No such file or directory)
+There are 3 movies and 0 actors in this collection, and it has an average feminist score of 55.0
+Ranked in order from most feminist to least feminist they are:
+	Alpha (0 actors, and a feminist score of 55)
+	Beta (0 actors, and a feminist score of 55)
+	Gamma (0 actors, and a feminist score of 55)
+
+[TRYING TO USE NONEXISTENT TESTRESULTS FILE (expect error message and no movies to be added)]
+Error trying to use file named 'nodata'
+	java.io.FileNotFoundException: nodata (No such file or directory)
+There are 0 movies and 0 actors in this collection, and it has an average feminist score of NaN
+Ranked in order from most feminist to least feminist they are:
+
+
+
+[INITIAL TESTING USING SMALLER FILES (small_allTests.txt,small_castGender.txt)]
+[TESTING CONSTRUCTOR/READMOVIES/READCASTS/TOSTRING/RANKMOVIES: EXPECTING 3 movies ordered (Gamma, Alpha, Beta), 5 actors]
+There are 3 movies and 5 actors in this collection, and it has an average feminist score of 55.0
+Ranked in order from most feminist to least feminist they are:
+	Gamma (2 actors, and a feminist score of 55)
+	Alpha (4 actors, and a feminist score of 55)
+	Beta (4 actors, and a feminist score of 55)
+
+[TESTING GETACTORNAMES: EXPECTING Tyler Perry, Cassi Davis, Patrice Lovely, Stella, Takis.]
+    --> [Tyler Perry, Stella, Patrice Lovely, Cassi Davis, Takis]
+[TESTING GETACTORS: EXPECTING Tyler Perry (male), Cassi Davis (female), Patrice Lovely (female), Stella (male),Takis (female).]
+    --> [(Tyler Perry, Male), (Stella, Male), (Patrice Lovely, Female), (Cassi Davis, Female), (Takis, Female)]
+[TESTING GETMOVIES: EXPECTING Alpha (4), Beta (4), Gamma (2)]
+    --> [Alpha (4 actors, and a feminist score of 55), Beta (4 actors, and a feminist score of 55), Gamma (2 actors, and a feminist score of 55)]
+[TESTING GETMOVIETITLES: EXPECTING Alpha, Beta, Gamma.]
+    --> [Alpha, Beta, Gamma]
+[TESTING FINDALLMOVIESPASSEDTESTNUM(0): EXPECTING Alpha, Beta, Gamma.]
+    --> [Alpha (4 actors, and a feminist score of 55), Beta (4 actors, and a feminist score of 55), Gamma (2 actors, and a feminist score of 55)]
+[TESTING FINDALLMOVIESPASSEDTESTNUM(3): EXPECTING empty linkedlist.] --> []
+
+[TESTING WHITEPASSRDFAIL: EXPECTING 0 movies.]
+0 movies passed the White test but did *not* pass the Rees-Davies test.
+
+[Changing 'Gamma' movie's test results. Should now pass White test and fail Rees-Davies. TESTING WHITEPASSRDFAIL: EXPECTING 1 movie.]
+1 movie passed the White test but did *not* pass the Rees-Davies test:
+	Gamma
+
+[Changing 'Beta' movie's test results. Should now pass White test and pass Rees-Davies. TESTING WHITEPASSRDFAIL: EXPECTING 1 movie.]
+1 movie passed the White test but did *not* pass the Rees-Davies test:
+	Gamma
+
+[Changing 'Alpha' movie's test results. Should now pass White test and fail Rees-Davies. TESTING WHITEPASSRDFAIL: EXPECTING 2 movies.]
+2 movies passed the White test but did *not* pass the Rees-Davies test:
+	Alpha
+	Gamma
+
+[TESTING PEIRCEORLANDAUPASS: EXPECTING 3 movies. (each movie should pass both tests right now)]
+3 movies passed the Peirce test OR the Landau test:
+	Alpha
+	Beta
+	Gamma
+
+[Changing 'Alpha' movie's test results. Should now fail Peirce and fail Landau. TESTING PEIRCEORLANDAUPASS: EXPECTING 2 movies.]
+2 movies passed the Peirce test OR the Landau test:
+	Beta
+	Gamma
+
+[Changing 'Beta' movie's test results. Should now fail Peirce and fail Landau. TESTING PEIRCEORLANDAUPASS: EXPECTING 1 movie.]
+1 movie passed the Peirce test OR the Landau test:
+	Gamma
+
+[Changing 'Gamma' movie's test results. Should now fail Peirce and fail Landau. TESTING PEIRCEORLANDAUPASS: EXPECTING 0 movies.]
+0 movies passed the Peirce test OR the Landau test.
+
+[Changing 'Gamma' movie's test results. Should now pass Peirce and fail Landau. TESTING PEIRCEORLANDAUPASS: EXPECTING 1 movie.]
+1 movie passed the Peirce test OR the Landau test:
+	Gamma
+
+[Changing 'Beta' movie's test results. Should now fail Peirce and pass Landau. TESTING PEIRCEORLANDAUPASS: EXPECTING 2 movies.]
+2 movies passed the Peirce test OR the Landau test:
+	Beta
+	Gamma
+
+[TESTING BECHDELPASS: EXPECTING 3 movies.]
+3 movies passed the Bechdel test:
+	Alpha
+	Beta
+	Gamma
+
+[Changing 'Alpha' movie's test results. Should now fail Bechdel test. TESTING BECHDELPASS: EXPECTING 2 movies.]
+2 movies passed the Bechdel test:
+	Beta
+	Gamma
+
+[Changing 'Beta' movie's test results. Should now fail Bechdel test. TESTING BECHDELPASS: EXPECTING 1 movie.]
+1 movie passed the Bechdel test:
+	Gamma
+
+[Changing 'Gamma' movie's test results. Should now fail Bechdel test. TESTING BECHDELPASS: EXPECTING 0 movies.]
+0 movies passed the Bechdel test.
+
+
+[TESTING USING COMPLETE FILES WITH REAL DATA (should have 50 movies!, ranked according to their feminist]
+[scores (and then ranked by # of actors if they tie, movies with fewer actors being ranked first, and]
+[then ranked alphabetically if they tie on the # of actors), expect average to be 47.9]
+There are 50 movies and 1955 actors in this collection, and it has an average feminist score of 47.9
+Ranked in order from most feminist to least feminist they are:
+	Alice Through the Looking Glass (23 actors, and a feminist score of 85)
+	Finding Dory (28 actors, and a feminist score of 85)
+	Independence Day: Resurgence (28 actors, and a feminist score of 80)
+	The Girl on the Train (20 actors, and a feminist score of 75)
+	The Boss (37 actors, and a feminist score of 75)
+	Sing (55 actors, and a feminist score of 75)
+	Arrival (60 actors, and a feminist score of 75)
+	Ghostbusters (54 actors, and a feminist score of 70)
+	The Divergent Series: Allegiant (91 actors, and a feminist score of 70)
+	Hidden Figures (96 actors, and a feminist score of 70)
+	Sausage Party (33 actors, and a feminist score of 65)
+	Miss Peregrine's Home for Peculiar Children (53 actors, and a feminist score of 65)
+	Suicide Squad (54 actors, and a feminist score of 65)
+	Storks (25 actors, and a feminist score of 60)
+	Captain America: Civil War (26 actors, and a feminist score of 60)
+	Kung Fu Panda 3 (36 actors, and a feminist score of 60)
+	Bad Moms (16 actors, and a feminist score of 55)
+	Star Trek Beyond (23 actors, and a feminist score of 55)
+	Pete's Dragon (41 actors, and a feminist score of 55)
+	Boo! A Madea Halloween (42 actors, and a feminist score of 55)
+	Don't Breathe (10 actors, and a feminist score of 50)
+	Lights Out (14 actors, and a feminist score of 50)
+	The Conjuring 2: The Enfield Poltergeist (32 actors, and a feminist score of 50)
+	Trolls (32 actors, and a feminist score of 50)
+	Jason Bourne (43 actors, and a feminist score of 50)
+	La La Land (49 actors, and a feminist score of 50)
+	Batman v Superman: Dawn of Justice (122 actors, and a feminist score of 50)
+	Moana (7 actors, and a feminist score of 45)
+	Ice Age: Collision Course (18 actors, and a feminist score of 45)
+	The Purge: Election Year (41 actors, and a feminist score of 45)
+	Fantastic Beasts and Where to Find Them (61 actors, and a feminist score of 45)
+	10 Cloverfield Lane (10 actors, and a feminist score of 40)
+	Passengers (27 actors, and a feminist score of 40)
+	Zootopia (32 actors, and a feminist score of 40)
+	Rogue One: A Star Wars Story (33 actors, and a feminist score of 40)
+	X-Men: Apocalypse (90 actors, and a feminist score of 40)
+	Central Intelligence (25 actors, and a feminist score of 35)
+	Now You See Me 2 (48 actors, and a feminist score of 35)
+	Ride Along 2 (50 actors, and a feminist score of 35)
+	The Accountant (58 actors, and a feminist score of 35)
+	The Secret Life of Pets (31 actors, and a feminist score of 30)
+	The Magnificent Seven (48 actors, and a feminist score of 30)
+	The Legend of Tarzan (58 actors, and a feminist score of 30)
+	Doctor Strange (29 actors, and a feminist score of 20)
+	Hacksaw Ridge (90 actors, and a feminist score of 20)
+	Teenage Mutant Ninja Turtles: Out of the Shadows (23 actors, and a feminist score of 10)
+	Deadpool (34 actors, and a feminist score of 10)
+	Sully (61 actors, and a feminist score of 10)
+	The Jungle Book (11 actors, and a feminist score of 5)
+	The Angry Birds Movie (47 actors, and a feminist score of 5)
+
+
+[Making sure that calling the toString works consistently. Expect same output as above]
+There are 50 movies and 1955 actors in this collection, and it has an average feminist score of 47.9
+Ranked in order from most feminist to least feminist they are:
+	Alice Through the Looking Glass (23 actors, and a feminist score of 85)
+	Finding Dory (28 actors, and a feminist score of 85)
+	Independence Day: Resurgence (28 actors, and a feminist score of 80)
+	The Girl on the Train (20 actors, and a feminist score of 75)
+	The Boss (37 actors, and a feminist score of 75)
+	Sing (55 actors, and a feminist score of 75)
+	Arrival (60 actors, and a feminist score of 75)
+	Ghostbusters (54 actors, and a feminist score of 70)
+	The Divergent Series: Allegiant (91 actors, and a feminist score of 70)
+	Hidden Figures (96 actors, and a feminist score of 70)
+	Sausage Party (33 actors, and a feminist score of 65)
+	Miss Peregrine's Home for Peculiar Children (53 actors, and a feminist score of 65)
+	Suicide Squad (54 actors, and a feminist score of 65)
+	Storks (25 actors, and a feminist score of 60)
+	Captain America: Civil War (26 actors, and a feminist score of 60)
+	Kung Fu Panda 3 (36 actors, and a feminist score of 60)
+	Bad Moms (16 actors, and a feminist score of 55)
+	Star Trek Beyond (23 actors, and a feminist score of 55)
+	Pete's Dragon (41 actors, and a feminist score of 55)
+	Boo! A Madea Halloween (42 actors, and a feminist score of 55)
+	Don't Breathe (10 actors, and a feminist score of 50)
+	Lights Out (14 actors, and a feminist score of 50)
+	The Conjuring 2: The Enfield Poltergeist (32 actors, and a feminist score of 50)
+	Trolls (32 actors, and a feminist score of 50)
+	Jason Bourne (43 actors, and a feminist score of 50)
+	La La Land (49 actors, and a feminist score of 50)
+	Batman v Superman: Dawn of Justice (122 actors, and a feminist score of 50)
+	Moana (7 actors, and a feminist score of 45)
+	Ice Age: Collision Course (18 actors, and a feminist score of 45)
+	The Purge: Election Year (41 actors, and a feminist score of 45)
+	Fantastic Beasts and Where to Find Them (61 actors, and a feminist score of 45)
+	10 Cloverfield Lane (10 actors, and a feminist score of 40)
+	Passengers (27 actors, and a feminist score of 40)
+	Zootopia (32 actors, and a feminist score of 40)
+	Rogue One: A Star Wars Story (33 actors, and a feminist score of 40)
+	X-Men: Apocalypse (90 actors, and a feminist score of 40)
+	Central Intelligence (25 actors, and a feminist score of 35)
+	Now You See Me 2 (48 actors, and a feminist score of 35)
+	Ride Along 2 (50 actors, and a feminist score of 35)
+	The Accountant (58 actors, and a feminist score of 35)
+	The Secret Life of Pets (31 actors, and a feminist score of 30)
+	The Magnificent Seven (48 actors, and a feminist score of 30)
+	The Legend of Tarzan (58 actors, and a feminist score of 30)
+	Doctor Strange (29 actors, and a feminist score of 20)
+	Hacksaw Ridge (90 actors, and a feminist score of 20)
+	Teenage Mutant Ninja Turtles: Out of the Shadows (23 actors, and a feminist score of 10)
+	Deadpool (34 actors, and a feminist score of 10)
+	Sully (61 actors, and a feminist score of 10)
+	The Jungle Book (11 actors, and a feminist score of 5)
+	The Angry Birds Movie (47 actors, and a feminist score of 5)
+
+
+[TESTING FINDALLMOVIESPASSEDTESTNUM(8): EXPECTING 5 movies.]
+5
+
+[TESTING WHITEPASSRDFAIL: EXPECTING 0 movies.]
+0 movies passed the White test but did *not* pass the Rees-Davies test.
+
+[TESTING PEIRCEORLANDAUPASS: EXPECTING 47 movies.]
+47 movies passed the Peirce test OR the Landau test:
+	Bad Moms
+	Hidden Figures
+	Independence Day: Resurgence
+	Finding Dory
+	Ghostbusters
+	The Divergent Series: Allegiant
+	Arrival
+	Ice Age: Collision Course
+	Kung Fu Panda 3
+	Miss Peregrine's Home for Peculiar Children
+	Sing
+	The Boss
+	The Girl on the Train
+	Boo! A Madea Halloween
+	Alice Through the Looking Glass
+	Fantastic Beasts and Where to Find Them
+	La La Land
+	Now You See Me 2
+	Passengers
+	Sausage Party
+	Storks
+	Suicide Squad
+	The Conjuring 2: The Enfield Poltergeist
+	The Purge: Election Year
+	X-Men: Apocalypse
+	10 Cloverfield Lane
+	Batman v Superman: Dawn of Justice
+	Captain America: Civil War
+	Central Intelligence
+	Don't Breathe
+	Hacksaw Ridge
+	Lights Out
+	Moana
+	Ride Along 2
+	Star Trek Beyond
+	Sully
+	Teenage Mutant Ninja Turtles: Out of the Shadows
+	The Angry Birds Movie
+	The Magnificent Seven
+	Trolls
+	Zootopia
+	Jason Bourne
+	Rogue One: A Star Wars Story
+	The Accountant
+	The Jungle Book
+	The Legend of Tarzan
+	The Secret Life of Pets
+
+[TESTING BECHDELPASS: EXPECTING 32 movies.]
+32 movies passed the Bechdel test:
+	Bad Moms
+	Hidden Figures
+	Independence Day: Resurgence
+	Finding Dory
+	Ghostbusters
+	The Divergent Series: Allegiant
+	Arrival
+	Ice Age: Collision Course
+	Kung Fu Panda 3
+	Miss Peregrine's Home for Peculiar Children
+	Sing
+	The Boss
+	The Girl on the Train
+	Boo! A Madea Halloween
+	Alice Through the Looking Glass
+	Fantastic Beasts and Where to Find Them
+	La La Land
+	Pete's Dragon
+	Sausage Party
+	Suicide Squad
+	The Conjuring 2: The Enfield Poltergeist
+	The Purge: Election Year
+	X-Men: Apocalypse
+	10 Cloverfield Lane
+	Captain America: Civil War
+	Don't Breathe
+	Lights Out
+	Moana
+	Teenage Mutant Ninja Turtles: Out of the Shadows
+	Trolls
+	Zootopia
+	Rogue One: A Star Wars Story
+
+------------------------------TESTING IN PRIORITY QUEUE DRIVER------------------------------
+[Creating an empty priority queue for testing]
+
+[Expect isEmpty() to return true] --> true
+[Expect size() to return 0] --> 0
+
+[Expect first() to throw an EmptyCollectionException]
+javafoundations.exceptions.EmptyCollectionException: Remove max operation failed. Tree is empty.
+
+[Expect dequeue() to throw an EmptyCollectionException]
+javafoundations.exceptions.EmptyCollectionException: Remove max operation failed. Tree is empty.
+
+[Enqueueing 3, 35, 40, -5, 2, 90, and 0 in that order]
+[Expect toString to return -5,3,2,90,35,40,0 in that order]
+-5
+3
+2
+90
+35
+40
+0
+
+[Expect size() to return 7] --> 7
+[Expect isEmpty() to return false] --> false
+[Expect first() to return 90] --> 90
+
+[Testing dequeuing elements, should be dequeued in order from greatest to smallest: 90,40,35,3,2,0,-5]
+90
+40
+35
+3
+2
+0
+-5

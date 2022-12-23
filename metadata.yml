@@ -1,0 +1,15 @@
+---
+:id: 154707798
+:submitters:
+- :name: Genevieve Mellott
+  :email: gm109@wellesley.edu
+- :name: Anna Zhou
+  :email: az108@wellesley.edu
+- :name: Yiduo Wang
+  :email: yw103@wellesley.edu
+:created_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2022-12-16 19:34:37.636881000 Z
+  zone: !ruby/object:ActiveSupport::TimeZone
+    name: America/Los_Angeles
+  time: 2022-12-16 11:34:37.636881000 Z
+:status: processed
